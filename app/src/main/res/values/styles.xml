@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <item name="actionMenuTextColor">@color/actionmenutextcolor</item>
+
+
+
+
+    </style>
+
+    <style name="MyTheme" parent="ThemeOverlay.AppCompat">
+
+        <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
+
+
+
+
+
+    </style>
+
+
+    <style name="MyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="android:color">#005BA5</item>
+
+
+    </style>
+</resources>
+

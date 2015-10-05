@@ -1,0 +1,470 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="3dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/detailnamelayout"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/detailnameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:textSize="22sp"
+                        android:layout_weight="1"
+                        android:textColor="#4CAF50"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="8dp"
+
+                        android:text="Sutar Hospital"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="3dp"
+                        android:layout_gravity="center_vertical">
+
+
+
+                    <TextView
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+
+                        android:layout_gravity="center_vertical|right"
+                        android:textColor="#4CAF50"
+                        android:text="3.2"/>
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="0dp"
+                            android:src="@drawable/ratingstar"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="8dp"
+                   android:id="@+id/timinglayout"
+                   android:layout_below="@id/detailnamelayout">
+
+                  <!-- <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="14sp"
+                       android:text="TIMING  "/>-->
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="#455A64"
+                       android:textSize="14sp"
+                       android:fontFamily="roboto-light"
+                       android:text="9am - 7:30pm"/>
+
+               </LinearLayout>
+
+               <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/specialitylayout"
+                    android:layout_below="@id/timinglayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="SPECIALITY   "/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        android:text="Accident Maternity"/>
+
+                 </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:id="@+id/addressLayout"
+                android:layout_below="@id/timinglayout">
+
+               <!-- <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Address   "/>-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#455A64"
+                    android:textSize="14sp"
+                    android:fontFamily="roboto-light"
+                    android:text="806 B Block,Nyati Marvel,Undri,Pune 411038"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navmaplayout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+               android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                android:background="#FCF4D4"
+                android:layout_below="@id/addressLayout"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/navmaplayout"
+                android:id="@+id/buttonlayout"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/callLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/custom_background_calllayout"
+                    android:layout_marginTop="3dp">
+
+                    <View
+                        android:id="@+id/greenview"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/custom_round_shape_green"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/greenview"
+                        android:layout_marginLeft="8dp"
+                        android:textSize="20sp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="Call"/>
+
+                    <TextView
+                        android:id="@+id/phonenumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:textSize="20sp"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_alignParentRight="true"
+                        android:text="9028576234"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/navLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/custom_background_navlayout"
+                    android:layout_marginTop="3dp">
+
+                    <View
+                        android:id="@+id/blueview"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/custom_round_shape_blue"></View>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/blueview"
+                        android:textSize="20sp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="Navigate"/>
+
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:textSize="20sp"
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentRight="true"
+                        android:text="2.4 Km"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/reviewsnamelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_below="@id/buttonlayout">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="21sp"
+                        android:text="REVIEWS"/>
+
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/reviewsnamelayout"
+                android:id="@+id/allreviewlayout"
+                android:layout_marginRight="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/firstreview"
+                    android:layout_margin="3dp">
+
+
+                    <View
+                        android:id="@+id/detailsfirstgreenview"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/custom_roundshape_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/detailsfirstgreenview"
+                        android:id="@+id/reviewnameratinglayout">
+                       <TextView
+                        android:id="@+id/firstReviewname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical|start"
+                           android:gravity="center_vertical|start"
+                        android:text="Rahul Agrawal"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:layout_weight="1"
+
+                        >
+                        <ImageView
+                            android:id="@+id/firstratingstar"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/green_star"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="5dp"/>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_green_light"
+                            android:layout_gravity="center_vertical|right"
+                            android:gravity="right"
+
+                            android:text="3.2"/>
+
+                    </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/detailsfirstgreenview"
+                        android:layout_below="@id/reviewnameratinglayout"
+                        android:text="A very Timely Service and supportive service"/>
+
+                    </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/firstreview"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/secondreview"
+                    android:layout_margin="3dp">
+
+                    <View
+                        android:id="@+id/detailsgreenview"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+
+                        android:background="@drawable/custom_roundshape_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/detailsgreenview"
+                        android:id="@+id/secondreviewnameratinglayout">
+                        <TextView
+                            android:id="@+id/secondReviewname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical|start"
+                            android:gravity="center_vertical|start"
+                            android:text="Rahul Agrawal"/>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:gravity="right"
+                            android:layout_weight="1"
+
+                            >
+                            <ImageView
+                                android:id="@+id/secondratingstar"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/green_star"
+                                android:layout_gravity="center_vertical|right"
+                                android:layout_marginRight="5dp"/>
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/holo_green_light"
+                                android:layout_gravity="center_vertical|right"
+                                android:gravity="right"
+
+                                android:text="4.1"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/detailsgreenview"
+                        android:layout_below="@id/secondreviewnameratinglayout"
+                        android:text="A very Timely Service and supportive service"/>
+
+                </RelativeLayout>
+
+
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/viewallreviewlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/allreviewlayout"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/custom_background_review"
+                android:layout_marginTop="3dp">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:gravity="center"
+                    android:text="View All Reviews"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/writereviewlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_below="@id/viewallreviewlayout"
+                android:background="@drawable/custom_background_review"
+                android:layout_marginTop="3dp">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:layout_weight="1"
+                    android:text="Write Review"/>
+
+
+            </LinearLayout>
+
+
+            </RelativeLayout>
+    </LinearLayout>

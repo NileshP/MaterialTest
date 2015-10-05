@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="miway.com.materialtest.SearchActivity">
+
+    <include
+        android:id="@+id/app_bar_search"
+        layout="@layout/app_bar_search"></include>
+
+
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/cardListView"
+       android:layout_below="@id/app_bar_search"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:paddingTop="16dp"
+       ></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

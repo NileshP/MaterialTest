@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="miway.com.materialtest.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/app_bar"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_height="300dp"
+        android:background="@drawable/drawer">
+
+            <com.pkmmte.view.CircularImageView
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="0dp"
+                android:src="@drawable/unknown_man"
+                app:border="false"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/profilephoto"
+                app:border_color="#EEEEEE"
+                app:border_width="4dp"
+                app:shadow="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:text="@string/profilename"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Reviewed Places"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="20dp"
+            android:text="My SOS Contacts"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

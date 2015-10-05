@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MiWay</string>
+    <string name="title_activity_main">MiWay</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="sos">SOS</string>
+    <string name="title_activity_sub">SubActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="search">Search</string>
+    <string name="title_activity_sub_data">SubDataActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="profilename">Nilesh Parshetti</string>
+</resources>

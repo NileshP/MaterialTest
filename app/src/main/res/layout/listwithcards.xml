@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cv"
+        android:layout_width="350dp"
+        android:layout_height="155dp"
+        android:layout_gravity="center"
+        card_view:cardElevation="0dp"
+        android:layout_margin="3dp"
+        card_view:cardCornerRadius="4dp">
+
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="3dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/namelayout"
+            android:paddingBottom="5dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+
+                android:textColor="#4CAF50"
+                android:text="Name Of Listing"/>
+
+
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="280dp"
+                android:textSize="18sp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="#4CAF50"
+                android:text="3.2"/>
+
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="310dp"
+                android:layout_marginTop="-2dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ratingstar"/>
+
+            </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_below="@id/namelayout"
+                android:id="@+id/addressbar">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#455A64"
+                    android:textSize="14sp"
+                    android:fontFamily="roboto-light"
+                    android:text="809 B,Nyati Marvel,Undri,Pune 411057"/>
+
+            </LinearLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/gridwords"
+                    android:columnCount="3"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_below="@id/addressbar">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#839DA8"
+                    android:fontFamily="roboto-bold"
+                    android:background="@drawable/custom_background_tags"
+                    android:text="Ambulance"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#839DA8"
+                    android:fontFamily="roboto-bold"
+                    android:background="@drawable/custom_background_tags"
+                    android:text="Doctor"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#839DA8"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="roboto-bold"
+                    android:background="@drawable/custom_background_tags"
+                    android:text="Hospital"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#839DA8"
+                    android:fontFamily="roboto-bold"
+                    android:background="@drawable/custom_background_tags"
+                    android:text="Pharmacist"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="4dp"
+                        android:textColor="#839DA8"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="roboto-bold"
+                        android:background="@drawable/custom_background_tags"
+                        android:text="Maternity"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="4dp"
+                        android:textColor="#839DA8"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="roboto-bold"
+                        android:background="@drawable/custom_background_tags"
+                        android:text="Casualty/Emergency"/>
+
+                    <!--<TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="4dp"
+                        android:textStyle="bold"
+                        android:textColor="#839DA8"
+                        android:fontFamily="roboto-bold"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="2dp"
+
+                        android:background="@drawable/custom_background_tags"
+                        android:text="ICU"/>-->
+
+
+                    
+
+                    </GridLayout>
+
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gridwords"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:background="@drawable/custom_background_border"
+                    android:gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1">
+
+                    <!--<TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#17B8FF"
+                        android:padding="3dp"
+                        android:layout_weight="1"
+                        android:text="NAVIGATE"/>-->
+                    
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:textSize="16sp"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:textColor="#0381EC"
+                        android:text="12.1 Km"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="right|center_vertical"
+                        android:layout_margin="0dp"
+                        android:layout_weight="0"
+                        android:background="@drawable/custom_background_navicon">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_margin="3dp"
+                            android:layout_marginLeft="0dp"
+                            android:src="@drawable/navbutton"/>
+                    </LinearLayout>
+                    
+                    </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/callLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:background="@drawable/custom_background_border"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:layout_weight="1">
+
+                    <!--<TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#17B8FF"
+                        android:layout_weight="1"
+                        android:padding="3dp"
+                        android:text="CALL"/>
+-->
+                    <TextView
+                        android:id="@+id/phonenumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="#0381EC"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:text="9028576234"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="right|center_vertical"
+                        android:layout_margin="0dp"
+                        android:layout_weight="0"
+                        android:background="@drawable/custom_background_navicon">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:layout_margin="3dp"
+                                android:layout_marginLeft="0dp"
+                                android:src="@drawable/callbuttons"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+
+            <!--<RelativeLayout
+                android:id="@+id/callLayout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_background_calllayout"
+                android:layout_marginTop="93dp">
+
+                <View
+                    android:id="@+id/greenview"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/custom_round_shape_green"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/greenview"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="Call"/>
+
+                <TextView
+                    android:id="@+id/phonenumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_alignParentRight="true"
+                    android:text="9028576234"/>
+
+             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/navLayout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_background_navlayout"
+                android:layout_marginTop="130dp">
+
+                <View
+                    android:id="@+id/blueview"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/custom_round_shape_blue"></View>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/blueview"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="Navigate"/>
+
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentRight="true"
+                    android:text="2.4 Km"/>
+
+
+
+
+            </RelativeLayout>-->
+                
+
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+    </LinearLayout>
