@@ -116,9 +116,18 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     }
 
 
-    public void profilePhotoClicked(View v){
+    public void profilePhotoClicked(View v) {
 
         startActivity(new Intent(this, ProfileActivity.class));
+
+    }
+
+
+    public void tollFreeClicked(View v){
+
+
+        String url = "tel:9028576234";
+        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(url)));
 
     }
 }

@@ -15,7 +15,7 @@ import android.view.MenuItem;
 public class SubDataActivity extends ActionBarActivity implements SubDataFragment.OnFragmentInteractionListener,DetailsFragment.OnFragmentInteractionListener {
 
     private Toolbar toolbar;
-
+    private int dataPosition;
 
 
 
@@ -33,8 +33,10 @@ public class SubDataActivity extends ActionBarActivity implements SubDataFragmen
         setTitle("SUB CATEGORY");
 
 
+        dataPosition = getIntent().getIntExtra("SELECT_ID",-1);
 
         Fragment fragment = new SubDataFragment();
+        ((SubDataFragment) fragment).setDataPosition(getDataPosition());
         getFragmentManager().beginTransaction().replace(R.id.content_frame_subdata,fragment).commit();
 
     }
@@ -67,5 +69,15 @@ public class SubDataActivity extends ActionBarActivity implements SubDataFragmen
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+
+
+    public int getDataPosition() {
+        return dataPosition;
+    }
+
+    public void setDataPosition(int dataPosition) {
+        this.dataPosition = dataPosition;
     }
 }

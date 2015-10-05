@@ -64,8 +64,11 @@ public class DataFragment extends Fragment  implements GridAdaptor.GridItemClick
         gridAdaptor  = new GridAdaptor(getActivity(),MainActivity.getGridInformation());
         recycleGrid.setAdapter(gridAdaptor);
 
-        recycleGrid.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        recycleGrid.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         gridAdaptor.setGridItemClickListener(this);
+
+
+
 
         return view;
     }
@@ -105,7 +108,9 @@ public class DataFragment extends Fragment  implements GridAdaptor.GridItemClick
 
         getFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();*/
 
-        startActivity(new Intent(getActivity(),SubDataActivity.class));
+        Intent intent = new Intent(getActivity(),SubDataActivity.class);
+        intent.putExtra("SELECT_ID",position);
+        startActivity(intent);
 
     }
 
@@ -125,5 +130,8 @@ public class DataFragment extends Fragment  implements GridAdaptor.GridItemClick
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
+
+
+
 
 }

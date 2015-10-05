@@ -28,6 +28,10 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
 
     private OnFragmentInteractionListener mListener;
 
+
+
+    private int dataPosition;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -60,10 +64,30 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
         View view =  inflater.inflate(R.layout.fragment_sub_data, container, false);
 
         cardRecycleView = (RecyclerView) view.findViewById(R.id.cardListViewSubData);
-        cardListAdaptor = new CardListAdaptor(getActivity(), SearchActivity.getCardListData());
+        cardListAdaptor = new CardListAdaptor(getActivity(), StaticDataProvider.getCardListData(getDataPosition()));
         cardListAdaptor.setCardClickListener(this);
         cardRecycleView.setAdapter(cardListAdaptor);
         cardRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        if(getDataPosition() == 0)
+            getActivity().setTitle("Ambulance");
+        if(getDataPosition() == 1)
+            getActivity().setTitle("Hospitals");
+        if(getDataPosition() == 2)
+            getActivity().setTitle("Pharmacy");
+        if(getDataPosition() == 3)
+            getActivity().setTitle("Garage");
+        if(getDataPosition() == 4)
+            getActivity().setTitle("Fuel Pumps");
+        if(getDataPosition() == 5)
+            getActivity().setTitle("Restaurant");
+        if(getDataPosition() == 6)
+            getActivity().setTitle("ATM");
+        if(getDataPosition() == 7)
+            getActivity().setTitle("PhoneBooth");
+        if(getDataPosition() == 8)
+            getActivity().setTitle("Toilet");
+
 
         return view;
     }
@@ -96,7 +120,7 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
     public void callLayoutClicked(long number, int goToId) {
 
         String url = "tel:"+number;
-        startActivity(new Intent(Intent.ACTION_CALL,Uri.parse(url)));
+        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(url)));
     }
 
     @Override
@@ -125,6 +149,14 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public int getDataPosition() {
+        return dataPosition;
+    }
+
+    public void setDataPosition(int dataPosition) {
+        this.dataPosition = dataPosition;
     }
 
 }
