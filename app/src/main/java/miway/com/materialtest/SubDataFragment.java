@@ -3,13 +3,26 @@ package miway.com.materialtest;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,12 +32,13 @@ import android.view.ViewGroup;
  * Use the {@link SubDataFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SubDataFragment extends Fragment implements CardListAdaptor.CardClickListener {
+public class SubDataFragment extends Fragment implements CardListAdaptor.CardClickListener, SwipeRefreshLayout.OnRefreshListener {
 
 
     private RecyclerView cardRecycleView;
     private CardListAdaptor cardListAdaptor;
     private CardListAdaptor.CardClickListener cardClickListener;
+    private SwipeRefreshLayout swipeContainer;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,7 +78,18 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
         View view =  inflater.inflate(R.layout.fragment_sub_data, container, false);
 
         cardRecycleView = (RecyclerView) view.findViewById(R.id.cardListViewSubData);
-        cardListAdaptor = new CardListAdaptor(getActivity(), StaticDataProvider.getCardListData(getDataPosition()));
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+
+        swipeContainer.setOnRefreshListener(this);
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
+
+    cardListAdaptor = new CardListAdaptor(getActivity(), StaticDataProvider.getCardListData(getDataPosition()));
         cardListAdaptor.setCardClickListener(this);
         cardRecycleView.setAdapter(cardListAdaptor);
         cardRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -136,6 +161,23 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
 
     }
 
+    @Override
+    public void onRefresh() {
+
+
+       /* new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                swipeContainer.setRefreshing(false);
+            }
+        }, 5000);*/
+
+        Log.d("start time", System.currentTimeMillis() + "");
+        invokeWS();
+
+
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -159,4 +201,63 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
         this.dataPosition = dataPosition;
     }
 
+
+    class FetchData extends AsyncTask<Void,String,List<CardData>>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+           // cardListAdaptor.clear();
+        }
+
+        @Override
+        protected List<CardData> doInBackground(Void... params) {
+
+
+            List<CardData> cardData = new ArrayList<>();
+
+            invokeWS();
+
+            return cardData;
+        }
+
+        @Override
+        protected void onPostExecute(List<CardData> cardData_new) {
+            super.onPostExecute(cardData_new);
+
+           // cardListAdaptor.addAll(cardData_new);
+
+            swipeContainer.setRefreshing(false);
+
+        }
+    }
+
+    public void invokeWS(){
+        // Show Progress Dialog
+
+        // Make RESTful webservice call using AsyncHttpClient object
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("http://52.88.2.44:8080/position?latitude=17.655&longitude=75.905" ,new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                Toast.makeText(SubDataFragment.this.getActivity(), "StatusCode "+statusCode, Toast.LENGTH_LONG).show();
+                swipeContainer.setRefreshing(false);
+                Log.d("End time", System.currentTimeMillis() + "");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                Toast.makeText(SubDataFragment.this.getActivity(), "StatusCode "+statusCode, Toast.LENGTH_LONG).show();
+            }
+
+
+        });
+    }
+
+
+
+
 }
+

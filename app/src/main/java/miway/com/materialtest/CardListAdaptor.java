@@ -29,6 +29,8 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
     private int previousPosition = 0;
     private CardClickListener cardClickListener;
 
+
+
     public CardListAdaptor(Context context, List<CardData> data) {
 
         inflater = LayoutInflater.from(context);
@@ -39,6 +41,16 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
 
     public void setCardClickListener(CardClickListener cardClickListener){
         this.cardClickListener = cardClickListener;
+    }
+
+    public void clear() {
+        data.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<CardData> list) {
+        data.addAll(list);
+        notifyDataSetChanged();
     }
 
 

@@ -26,7 +26,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ *
  * Activities that contain this fragment must implement the
  * {@link NavigationDrawerFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.

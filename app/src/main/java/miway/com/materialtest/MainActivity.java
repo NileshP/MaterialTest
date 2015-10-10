@@ -1,7 +1,10 @@
 package miway.com.materialtest;
 
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -12,18 +15,54 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.pkmmte.view.CircularImageView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.OnFragmentInteractionListener,DataFragment.OnFragmentInteractionListener,SubDataFragment.OnFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.OnFragmentInteractionListener,DataFragment.OnFragmentInteractionListener,SubDataFragment.OnFragmentInteractionListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener
+{
 
     private Toolbar toolbar;
     private RecyclerView recycleGrid;
 
     private GridAdaptor gridAdaptor;
+
+    GoogleApiClient mGoogleApiClient;
+    Location mLastLocation;
+    String mLatitudeString="";
+    String mLongitudeString = "";
+
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+            mLatitudeString = String.valueOf(mLastLocation.getLatitude());
+            mLongitudeString = String.valueOf(mLastLocation.getLongitude());
+
+
+        }
+    }
+
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+
 
 
     @Override
@@ -38,6 +77,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         setTitle("MiWay");
+
+        buildGoogleApiClient();
+
+
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
 
@@ -62,6 +105,18 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         });
 
     }
+
+
+
+
+        protected synchronized void buildGoogleApiClient() {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+
 
 
 
