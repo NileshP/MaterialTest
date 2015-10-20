@@ -10,13 +10,15 @@ public class CardData {
     private String callText;
     private String navText;
     private int goToId;
+    private String address;
 
-    public CardData(String name, double rating, String callText, String navText, int goToId) {
+    public CardData(String name, double rating, String callText, String navText, int goToId,String address) {
         this.name = name;
         this.rating = rating;
         this.callText = callText;
         this.navText = navText;
         this.goToId = goToId;
+        this.address = address;
     }
 
     public String getName() {
@@ -57,5 +59,13 @@ public class CardData {
 
     public void setGoToId(int goToId) {
         this.goToId = goToId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

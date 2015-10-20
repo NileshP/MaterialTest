@@ -4,20 +4,42 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class SplashActivity extends ActionBarActivity {
 
 
     SplashActivity activity = this;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        new myTask().execute();
+
+        progressBar = (ProgressBar) this.findViewById(R.id.marker_progress);
+
+
+        invokeWSBaseJSon();
+
+
     }
 
 
@@ -43,42 +65,86 @@ public class SplashActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void invokeWSBaseJSon() {
 
 
-    private class myTask extends AsyncTask<Void, Void, Boolean> {
+        // Make RESTful webservice call using AsyncHttpClient object
+        AsyncHttpClient client = new AsyncHttpClient();
 
-        @Override
-        protected Boolean doInBackground(Void... params) {
+        StaticDataProvider.getBankData().clear();
+        final List<Position> positions = new ArrayList<>();
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        client.get("http://52.88.2.44:8080/positionjson?latitude=17.655&longitude=75.905", new BaseJsonHttpResponseHandler<Position>() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Position response) {
 
 
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("Started Parsing");
+
+
+                try {
+                    JSONObject jsonRootObject = new JSONObject(rawJsonResponse);
+
+                    //Get the instance of JSONArray that contains JSONObjects
+                    JSONArray jsonArray = jsonRootObject.optJSONArray("position");
+
+                    //Iterate the jsonArray and print the info of JSONObjects
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+
+                        String district = jsonObject.getString("district").toString();
+                        String city = jsonObject.optString("city").toString();
+                        String destinationName = jsonObject.optString("destinationName").toString();
+                        String address = jsonObject.optString("address").toString();
+                        String contact = jsonObject.optString("contact").toString();
+                        String latitude = jsonObject.optString("latitude").toString();
+                        String longitude = jsonObject.optString("longitude").toString();
+
+
+                        Position position = new Position(district, city, destinationName, address, contact, latitude, longitude);
+
+                        positions.add(position);
+
+                    }
+
+                    StaticDataProvider.getBankData().addAll(positions);
+
+                    progressBar.setVisibility(View.INVISIBLE);
+
+                    Log.d("SUCCESS","DATA LOADING COMPLETED");
+
+                    Intent intent = new Intent(activity, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
 
-            return true;
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Position errorResponse) {
+
+            }
+
+            @Override
+            protected Position parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+
+                return null;
+            }
 
 
-        }
-
-        @Override
-        protected void onPreExecute() {
+            @Override
+            public void onFinish() {
 
 
-        }
-
-        @Override
-        protected void onPostExecute(Boolean result) {
-
-
-            Intent intent = new Intent(activity, MainActivity.class);
-            startActivity(intent);
-            finish();
-
-
-        }
-
+            }
+        });
 
     }
 }

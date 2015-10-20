@@ -3,10 +3,8 @@ package miway.com.materialtest;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,13 +12,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 import cz.msebera.android.httpclient.Header;
 
@@ -40,10 +44,12 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
     private CardListAdaptor.CardClickListener cardClickListener;
     private SwipeRefreshLayout swipeContainer;
 
+    private boolean success = false;
     private OnFragmentInteractionListener mListener;
 
 
-
+     List<Position> listData = new ArrayList<Position>();
+    List<CardData> cardListData = new ArrayList<CardData>();
     private int dataPosition;
 
     /**
@@ -165,14 +171,10 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
     public void onRefresh() {
 
 
-       /* new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                swipeContainer.setRefreshing(false);
-            }
-        }, 5000);*/
-
         Log.d("start time", System.currentTimeMillis() + "");
-        invokeWS();
+        invokeWSBaseJSon();
+
+
 
 
 
@@ -201,60 +203,95 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
         this.dataPosition = dataPosition;
     }
 
+    public void invokeWSBaseJSon(){
 
-    class FetchData extends AsyncTask<Void,String,List<CardData>>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-           // cardListAdaptor.clear();
-        }
-
-        @Override
-        protected List<CardData> doInBackground(Void... params) {
-
-
-            List<CardData> cardData = new ArrayList<>();
-
-            invokeWS();
-
-            return cardData;
-        }
-
-        @Override
-        protected void onPostExecute(List<CardData> cardData_new) {
-            super.onPostExecute(cardData_new);
-
-           // cardListAdaptor.addAll(cardData_new);
-
-            swipeContainer.setRefreshing(false);
-
-        }
-    }
-
-    public void invokeWS(){
         // Show Progress Dialog
-
+        swipeContainer.setRefreshing(true);
         // Make RESTful webservice call using AsyncHttpClient object
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://52.88.2.44:8080/position?latitude=17.655&longitude=75.905" ,new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
-                Toast.makeText(SubDataFragment.this.getActivity(), "StatusCode "+statusCode, Toast.LENGTH_LONG).show();
-                swipeContainer.setRefreshing(false);
-                Log.d("End time", System.currentTimeMillis() + "");
+
+
+        client.get("http://52.88.2.44:8080/positionjson?latitude=17.655&longitude=75.905" ,new BaseJsonHttpResponseHandler<Position>() {
+
+
+
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Position response) {
+
+
+                System.out.println("Started Parsing");
+
+                System.out.println(rawJsonResponse);
+
+
+                try {
+                    JSONObject  jsonRootObject = new JSONObject(rawJsonResponse);
+
+                    //Get the instance of JSONArray that contains JSONObjects
+                    JSONArray jsonArray = jsonRootObject.optJSONArray("position");
+
+                    //Iterate the jsonArray and print the info of JSONObjects
+                    for(int i=0; i < jsonArray.length(); i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+
+                        String district = jsonObject.getString("district").toString();
+                        String city = jsonObject.optString("city").toString();
+                        String destinationName = jsonObject.optString("destinationName").toString();
+                        String address = jsonObject.optString("address").toString();
+                        String contact = jsonObject.optString("contact").toString();
+                        String latitude = jsonObject.optString("latitude").toString();
+                        String longitude = jsonObject.optString("longitude").toString();
+
+
+                        Position position = new Position(district,city,destinationName,address,contact,latitude,longitude);
+                        listData.add(position);
+
+                        CardData cardData = new CardData(destinationName,0.0,contact,"-.-",i+1,address);
+                        cardListData.add(cardData);
+
+
+
+                    }
+
+
+
+                    cardListAdaptor.clear();
+                    cardListAdaptor.addAll(cardListData);
+                    swipeContainer.setRefreshing(false);
+
+
+                } catch (JSONException e) {e.printStackTrace();}
+
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Position errorResponse) {
 
-                Toast.makeText(SubDataFragment.this.getActivity(), "StatusCode "+statusCode, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected Position parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+
+                return null;
             }
 
 
+            @Override
+            public void onFinish() {
+
+
+            }
         });
+
+
     }
+
+
+
 
 
 

@@ -73,6 +73,7 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
         holder.navText.setText(data.get(position).getNavText());
         holder.rating.setText(data.get(position).getRating()+"");
         holder.goToId = data.get(position).getGoToId();
+        holder.address.setText(data.get(position).getAddress());
 
         if (position > previousPosition) {
 
@@ -101,6 +102,7 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
         TextView rating;
         TextView callText;
         TextView navText;
+        TextView address;
         LinearLayout callLayout;
         CardView cardView;
         int goToId;
@@ -114,6 +116,7 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
             callText = (TextView) itemView.findViewById(R.id.phonenumber);
             navText = (TextView) itemView.findViewById(R.id.distance);
             cardView = (CardView) itemView.findViewById(R.id.cv);
+            address = (TextView) itemView.findViewById(R.id.address);
             /*Typeface typeface = Typeface.createFromAsset()
             name.setTypeface();
 */

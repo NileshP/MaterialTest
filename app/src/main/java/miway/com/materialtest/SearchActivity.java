@@ -61,16 +61,16 @@ public class SearchActivity extends ActionBarActivity {
 
         List<CardData> data = new ArrayList<CardData>();
 
-        data.add(new CardData("Sutar Hospital",3.5,"9028576234","2.4"+"Km",1));
-        data.add(new CardData("Hinjewadi Hospital", 2.2, "8007140088", "15.3" + "Km", 2));
-        data.add(new CardData("Sanjivani Hospital",1.5,"9028576234","3.4"+"Km",1));
-        data.add(new CardData("City Care Hospital",2.1,"8007140088","5.3"+"Km",2));
-        data.add(new CardData("Surya Hospital",3.2,"9028576234","5.4"+"Km",1));
-        data.add(new CardData("Sai Hospital",2.7,"8007140088","1.3"+"Km",2));
-        data.add(new CardData("Polaris HealthCare",2.3,"9028576234","1.4"+"Km",1));
-        data.add(new CardData("Lokmanya Hospital",1.2,"8007140088","4.3"+"Km",2));
-        data.add(new CardData("Apple Hospital",3.1,"9028576234","2.2"+"Km",1));
-        data.add(new CardData("Aditya Birla Hospital",4.5,"8007140088","12.2"+"Km",2));
+        data.add(new CardData("Sutar Hospital",3.5,"9028576234","2.4"+"Km",1,""));
+        data.add(new CardData("Hinjewadi Hospital", 2.2, "8007140088", "15.3" + "Km", 2,""));
+        data.add(new CardData("Sanjivani Hospital",1.5,"9028576234","3.4"+"Km",1,""));
+        data.add(new CardData("City Care Hospital",2.1,"8007140088","5.3"+"Km",2,""));
+        data.add(new CardData("Surya Hospital",3.2,"9028576234","5.4"+"Km",1,""));
+        data.add(new CardData("Sai Hospital",2.7,"8007140088","1.3"+"Km",2,""));
+        data.add(new CardData("Polaris HealthCare",2.3,"9028576234","1.4"+"Km",1,""));
+        data.add(new CardData("Lokmanya Hospital",1.2,"8007140088","4.3"+"Km",2,""));
+        data.add(new CardData("Apple Hospital",3.1,"9028576234","2.2"+"Km",1,""));
+        data.add(new CardData("Aditya Birla Hospital",4.5,"8007140088","12.2"+"Km",2,""));
 
 
 

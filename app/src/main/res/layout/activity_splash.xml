@@ -6,8 +6,17 @@
     android:background="@drawable/splashpage"
     android:layout_margin="0dp"
     tools:ignore="MergeRootFrame"
-    tools:context="miway.com.materialtest.SplashActivity">
+    tools:context="miway.com.materialtest.SplashActivity"
+    android:gravity="center_vertical|center_horizontal">
 
+
+    <ProgressBar android:indeterminate="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/marker_progress"
+        style="?android:attr/indeterminateProgressStyle"
+        android:progressDrawable="@drawable/progress_bar_drawable"
+        android:layout_gravity="center_horizontal"/>
 
 
 
