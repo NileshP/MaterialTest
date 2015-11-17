@@ -74,6 +74,7 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
         holder.rating.setText(data.get(position).getRating()+"");
         holder.goToId = data.get(position).getGoToId();
         holder.address.setText(data.get(position).getAddress());
+        holder.cardData = data.get(position);
 
         if (position > previousPosition) {
 
@@ -106,9 +107,13 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
         LinearLayout callLayout;
         CardView cardView;
         int goToId;
+        CardData cardData;
+
 
         public MyCardViewHolder(View itemView) {
             super(itemView);
+
+
 
 
             name = (TextView) itemView.findViewById(R.id.nameText);
@@ -127,8 +132,9 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
                 public void onClick(View v) {
 
 
+
                     System.out.println("card view clicked"+goToId);
-                    cardClickListener.cardViewClicked(goToId);
+                    cardClickListener.cardViewClicked(cardData);
 
                 }
             });
@@ -153,7 +159,7 @@ public class CardListAdaptor extends RecyclerView.Adapter<CardListAdaptor.MyCard
     public interface CardClickListener{
 
         public void callLayoutClicked(long number,int goToId);
-        public void cardViewClicked(int goToId);
+        public void cardViewClicked(CardData cardData);
         public void navLayoutClicked(int goToId);
     }
 }

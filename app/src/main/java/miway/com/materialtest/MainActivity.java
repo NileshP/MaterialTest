@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationListener;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.OnFragmentInteractionListener,DataFragment.OnFragmentInteractionListener,SubDataFragment.OnFragmentInteractionListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.OnFragmentInteractionListener,DataFragment.OnFragmentInteractionListener,SubDataFragment.OnFragmentInteractionListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,LocationListener
 {
 
     private Toolbar toolbar;
@@ -41,11 +42,16 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     @Override
     public void onConnected(Bundle bundle) {
 
+        System.out.println("CAllback Connected");
+
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null) {
             mLatitudeString = String.valueOf(mLastLocation.getLatitude());
             mLongitudeString = String.valueOf(mLastLocation.getLongitude());
+
+            StaticDataProvider.latitudeString = mLatitudeString;
+            StaticDataProvider.longitudeString = mLongitudeString;
 
 
         }
@@ -62,8 +68,12 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-
+        mGoogleApiClient.connect();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,17 +91,16 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         buildGoogleApiClient();
 
 
+        System.out.println("Latitude : " + mLatitudeString + "\n Longitude : " + mLongitudeString);
+
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
 
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
 
-
-
-
         Fragment fragment = new DataFragment();
-        getFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         View circularImageView = findViewById(R.id.profilephoto);
         circularImageView.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +112,45 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
             }
         });
+
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+
+            System.out.println("Checking");
+            if(mGoogleApiClient.isConnected()) {
+                System.out.println("Connected");
+            }else{
+                System.out.println("2 Not Connect");
+            }
+
+            if(mGoogleApiClient.isConnecting()){
+
+                System.out.println("Trying to connect");
+            }else{
+
+                System.out.println("Not trying to connect");
+            }
+
+        } else{
+
+
+            System.out.println("Not Connected");
+
+        }
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+
+
+        if (mLastLocation == null){
+
+            System.out.println("m Lst Location is null");
+
+        }else{
+
+            System.out.println("m last location is not null");
+        }
+
 
     }
 
@@ -181,8 +229,30 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     public void tollFreeClicked(View v){
 
 
-        String url = "tel:9028576234";
+        String url = "tel:18005551234";
         startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(url)));
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+
+
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
 
     }
 }

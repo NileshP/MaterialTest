@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdate;
@@ -33,6 +34,10 @@ public class DetailsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
+
+    CardData selectData;
 
     MapView mapView;
     GoogleMap map;
@@ -83,6 +88,17 @@ public class DetailsFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.layout_details_page, container, false);
 
+
+        TextView nameText = (TextView) v.findViewById(R.id.detailnameText);
+        nameText.setText(getSelectData().getName());
+        TextView addressText = (TextView) v.findViewById(R.id.detailAddress);
+        addressText.setText(getSelectData().getAddress());
+        TextView phoneText = (TextView) v.findViewById(R.id.phonenumber);
+        phoneText.setText(getSelectData().getCallText());
+        TextView navText = (TextView) v.findViewById(R.id.distance);
+        navText.setText(getSelectData().getNavText()+" Km");
+
+
         // Gets the MapView from the XML layout and creates it
         mapView = (MapView) v.findViewById(R.id.navmaplayout);
         mapView.onCreate(savedInstanceState);
@@ -99,10 +115,19 @@ public class DetailsFragment extends Fragment {
             e.printStackTrace();
         }
 
-        // Updates the location and zoom of the MapView
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(18.509816,73.814995), 8);
-        map.animateCamera(cameraUpdate);
-        Marker marker = map.addMarker(new MarkerOptions().position(new LatLng(18.509816,73.814995)));
+        try {
+            Double lat = Double.parseDouble(getSelectData().getLatitude());
+            Double logn = Double.parseDouble(getSelectData().getLongitude());
+
+
+            if((lat != null) && (logn != null)) {
+                // Updates the location and zoom of the MapView
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, logn), 8);
+                map.animateCamera(cameraUpdate);
+                Marker marker = map.addMarker(new MarkerOptions().position(new LatLng(lat, logn)));
+            }
+
+        }catch(Exception e){}
 
 
 
@@ -167,6 +192,14 @@ public class DetailsFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public CardData getSelectData() {
+        return selectData;
+    }
+
+    public void setSelectData(CardData selectData) {
+        this.selectData = selectData;
     }
 
 }

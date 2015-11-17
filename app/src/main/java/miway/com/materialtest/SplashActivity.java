@@ -1,6 +1,7 @@
 package miway.com.materialtest;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 
@@ -29,12 +33,27 @@ public class SplashActivity extends ActionBarActivity {
     SplashActivity activity = this;
     ProgressBar progressBar;
 
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+
         progressBar = (ProgressBar) this.findViewById(R.id.marker_progress);
+
 
 
         invokeWSBaseJSon();
@@ -76,7 +95,17 @@ public class SplashActivity extends ActionBarActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        client.get("http://52.88.2.44:8080/positionjson?latitude=17.655&longitude=75.905", new BaseJsonHttpResponseHandler<Position>() {
+
+
+
+
+
+
+        String URLm = "http://52.88.2.44:8080/positionjson?latitude=17.655&longitude=75.905";
+
+        System.out.println("URL is "+URLm);
+
+        client.get(URLm, new BaseJsonHttpResponseHandler<Position>() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Position response) {
@@ -115,7 +144,7 @@ public class SplashActivity extends ActionBarActivity {
 
                     progressBar.setVisibility(View.INVISIBLE);
 
-                    Log.d("SUCCESS","DATA LOADING COMPLETED");
+                    Log.d("SUCCESS", "DATA LOADING COMPLETED");
 
                     Intent intent = new Intent(activity, MainActivity.class);
                     startActivity(intent);
@@ -147,6 +176,8 @@ public class SplashActivity extends ActionBarActivity {
         });
 
     }
+
+
 }
 
 

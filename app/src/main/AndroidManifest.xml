@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
 
     <application
@@ -14,7 +15,7 @@
         android:largeHeap="true"
 
         android:theme="@style/AppTheme" >
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA3cZpsks2pGGOJBkxdVKVdjv_mh5wDMJA"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDn9w_TZuNL_5o0RdtWof1CM-k9vHsW4sk"/>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"

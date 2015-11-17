@@ -303,8 +303,16 @@ public class NavigationDrawerFragment extends Fragment implements ExpandableList
 
 
 
-        Log.d("SYSO", clickId + "---"+position);
+        Log.d("SYSO", clickId + "---" + position);
         System.out.println("Position selected" + clickId);
+
+
+        if( position ==13 ) {
+
+            Intent intent = new Intent(getActivity(), SubDataActivity.class);
+            intent.putExtra("SELECT_ID", 6);
+            startActivity(intent);
+        }
 
         //  startActivity(new Intent(getActivity(),SearchActivity.class));
     }

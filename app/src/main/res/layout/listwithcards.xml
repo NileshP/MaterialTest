@@ -89,7 +89,7 @@
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20dp"
                     android:textColor="#455A64"
                     android:textSize="14sp"
                     android:fontFamily="roboto-light"
@@ -120,7 +120,7 @@
                     android:textColor="#839DA8"
                     android:fontFamily="roboto-bold"
                     android:background="@drawable/custom_background_tags"
-                    android:text="Ambulance"/>
+                    android:text="Master Card"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
                     android:textColor="#839DA8"
                     android:fontFamily="roboto-bold"
                     android:background="@drawable/custom_background_tags"
-                    android:text="Doctor"/>
+                    android:text="VISA Card"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
                     android:layout_marginTop="2dp"
                     android:fontFamily="roboto-bold"
                     android:background="@drawable/custom_background_tags"
-                    android:text="Hospital"/>
+                    android:text="AMEX"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -169,7 +169,7 @@
                     android:textColor="#839DA8"
                     android:fontFamily="roboto-bold"
                     android:background="@drawable/custom_background_tags"
-                    android:text="Pharmacist"/>
+                    android:text="Cheque Deposit"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
                         android:layout_marginTop="2dp"
                         android:fontFamily="roboto-bold"
                         android:background="@drawable/custom_background_tags"
-                        android:text="Maternity"/>
+                        android:text="Cash Deposit"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -201,7 +201,7 @@
                         android:layout_marginTop="2dp"
                         android:fontFamily="roboto-bold"
                         android:background="@drawable/custom_background_tags"
-                        android:text="Casualty/Emergency"/>
+                        android:text="ATM"/>
 
                     <!--<TextView
                         android:layout_width="wrap_content"

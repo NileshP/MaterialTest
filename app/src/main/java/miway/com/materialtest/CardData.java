@@ -11,14 +11,20 @@ public class CardData {
     private String navText;
     private int goToId;
     private String address;
+    private String latitude;
+    private String longitude;
 
-    public CardData(String name, double rating, String callText, String navText, int goToId,String address) {
+
+
+    public CardData(String name, double rating, String callText, String navText, int goToId,String address,String latitude,String longitude) {
         this.name = name;
         this.rating = rating;
         this.callText = callText;
         this.navText = navText;
         this.goToId = goToId;
         this.address = address;
+        this.latitude=latitude;
+        this.longitude=longitude;
     }
 
     public String getName() {
@@ -67,5 +73,21 @@ public class CardData {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

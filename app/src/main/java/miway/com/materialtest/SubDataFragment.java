@@ -2,6 +2,7 @@ package miway.com.materialtest;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -13,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 
@@ -52,6 +56,8 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
     List<CardData> cardListData = new ArrayList<CardData>();
     private int dataPosition;
 
+
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -71,11 +77,7 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -155,10 +157,13 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
     }
 
     @Override
-    public void cardViewClicked(int goToId) {
+    public void cardViewClicked(CardData cardData) {
 
 
         Fragment fragment = new DetailsFragment();
+
+        ((DetailsFragment)fragment).setSelectData(cardData);
+
         getFragmentManager().beginTransaction().replace(R.id.content_frame_subdata,fragment).commit();
     }
 
@@ -179,6 +184,8 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
 
 
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -203,6 +210,9 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
         this.dataPosition = dataPosition;
     }
 
+
+
+
     public void invokeWSBaseJSon(){
 
         // Show Progress Dialog
@@ -212,7 +222,8 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
 
 
 
-        client.get("http://52.88.2.44:8080/positionjson?latitude=17.655&longitude=75.905" ,new BaseJsonHttpResponseHandler<Position>() {
+
+        client.get("http://52.88.2.44:8080/positionjson?latitude="+StaticDataProvider.latitudeString+"&longitude="+StaticDataProvider.longitudeString+"" ,new BaseJsonHttpResponseHandler<Position>() {
 
 
 
@@ -250,7 +261,7 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
                         Position position = new Position(district,city,destinationName,address,contact,latitude,longitude);
                         listData.add(position);
 
-                        CardData cardData = new CardData(destinationName,0.0,contact,"-.-",i+1,address);
+                        CardData cardData = new CardData(destinationName,0.0,contact,"-.-",i+1,address,latitude,longitude);
                         cardListData.add(cardData);
 
 
@@ -289,6 +300,9 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
 
 
     }
+
+
+
 
 
 

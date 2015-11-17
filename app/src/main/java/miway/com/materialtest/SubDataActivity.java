@@ -1,6 +1,7 @@
 package miway.com.materialtest;
 
 import android.app.Fragment;
+import android.location.Location;
 import android.net.Uri;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -11,6 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 
 public class SubDataActivity extends ActionBarActivity implements SubDataFragment.OnFragmentInteractionListener,DetailsFragment.OnFragmentInteractionListener {
 
@@ -18,6 +23,13 @@ public class SubDataActivity extends ActionBarActivity implements SubDataFragmen
     private int dataPosition;
 
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +43,7 @@ public class SubDataActivity extends ActionBarActivity implements SubDataFragmen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle("SUB CATEGORY");
+
 
 
         dataPosition = getIntent().getIntExtra("SELECT_ID",-1);
@@ -80,4 +93,6 @@ public class SubDataActivity extends ActionBarActivity implements SubDataFragmen
     public void setDataPosition(int dataPosition) {
         this.dataPosition = dataPosition;
     }
+
+
 }
