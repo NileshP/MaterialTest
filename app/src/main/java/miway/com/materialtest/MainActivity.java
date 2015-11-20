@@ -21,6 +21,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     @Override
     public void onConnected(Bundle bundle) {
 
-        System.out.println("CAllback Connected");
+        System.out.println("Callback Connected");
 
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
@@ -55,6 +57,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
 
         }
+
+
     }
 
 
@@ -236,8 +240,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     public void onLocationChanged(Location location) {
-
-
 
     }
 

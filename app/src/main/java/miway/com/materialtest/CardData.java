@@ -3,7 +3,7 @@ package miway.com.materialtest;
 /**
  * Created by Mallinath on 6/22/2015.
  */
-public class CardData {
+public class CardData implements Comparable<CardData> {
 
     private String name;
     private double rating;
@@ -13,10 +13,12 @@ public class CardData {
     private String address;
     private String latitude;
     private String longitude;
+    private double distance;
 
 
 
-    public CardData(String name, double rating, String callText, String navText, int goToId,String address,String latitude,String longitude) {
+
+    public CardData(String name, double rating, String callText, String navText, int goToId,String address,String latitude,String longitude,double distance) {
         this.name = name;
         this.rating = rating;
         this.callText = callText;
@@ -25,6 +27,8 @@ public class CardData {
         this.address = address;
         this.latitude=latitude;
         this.longitude=longitude;
+        this.distance = distance;
+
     }
 
     public String getName() {
@@ -89,5 +93,33 @@ public class CardData {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+
+
+    @Override
+    public int compareTo(CardData cardData) {
+
+        if(getDistance() < cardData.getDistance()){
+
+            return -1;
+
+        }else if (getDistance() > cardData.getDistance()){
+
+            return 1;
+
+        }else{
+
+            return 0;
+        }
     }
 }

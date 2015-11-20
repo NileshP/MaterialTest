@@ -28,7 +28,10 @@ public class Position {
 
     public String longitude;
 
-    public Position(String district, String city, String destinationName, String address, String contact, String latitude, String longitude) {
+
+    public double distance;
+
+    public Position(String district, String city, String destinationName, String address, String contact, String latitude, String longitude,double distance) {
         this.district = district;
         this.city = city;
         this.destinationName = destinationName;
@@ -36,6 +39,7 @@ public class Position {
         this.contact = contact;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.distance=distance;
     }
 
     public Position(){}
@@ -94,5 +98,13 @@ public class Position {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

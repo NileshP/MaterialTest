@@ -134,7 +134,7 @@ public class SplashActivity extends ActionBarActivity {
                         String longitude = jsonObject.optString("longitude").toString();
 
 
-                        Position position = new Position(district, city, destinationName, address, contact, latitude, longitude);
+                        Position position = new Position(district, city, destinationName, address, contact, latitude, longitude,0.0);
 
                         positions.add(position);
 
