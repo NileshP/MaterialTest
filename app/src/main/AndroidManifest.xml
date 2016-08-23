@@ -17,30 +17,30 @@
         android:theme="@style/AppTheme" >
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDn9w_TZuNL_5o0RdtWof1CM-k9vHsW4sk"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name=".activity.SearchActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_sub"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".SubDataActivity"
+            android:name=".activity.SubDataActivity"
             android:label="@string/title_activity_sub_data"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait" >
@@ -51,15 +51,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
 
-        <service android:name=".LocationService" android:process=":location_service" />
+        <service android:name=".pojo.LocationService" android:process=":location_service" />
     </application>
 
 </manifest>

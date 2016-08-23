@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="miway.com.materialtest.MainActivity">
+        tools:context=".activity.MainActivity">
 
         <include
             android:id="@+id/app_bar"
@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:layout="@layout/fragment_navigation_drawer"
-            android:name="miway.com.materialtest.NavigationDrawerFragment"
+            android:name="miway.com.materialtest.fragment.NavigationDrawerFragment"
             tools:layout="@layout/fragment_navigation_drawer"></fragment>
 
 

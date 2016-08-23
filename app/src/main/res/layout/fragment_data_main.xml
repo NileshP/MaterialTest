@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="miway.com.materialtest.DataFragment">
+    tools:context=".fragment.DataFragment">
 
 
     <android.support.v7.widget.RecyclerView

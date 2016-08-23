@@ -6,7 +6,7 @@
     android:background="@drawable/splashpage"
     android:layout_margin="0dp"
     tools:ignore="MergeRootFrame"
-    tools:context="miway.com.materialtest.SplashActivity"
+    tools:context=".activity.SplashActivity"
     android:gravity="center_vertical|center_horizontal">
 
 
