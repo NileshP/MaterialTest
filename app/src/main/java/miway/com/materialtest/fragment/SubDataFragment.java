@@ -281,9 +281,10 @@ public class SubDataFragment extends Fragment implements CardListAdaptor.CardCli
                         String id = jsonObject.optString("id").toString();
 
 
+
                         double distance = CalcDistance(Double.parseDouble(StaticDataProvider.latitudeString), Double.parseDouble(StaticDataProvider.longitudeString), Double.parseDouble(latitude), Double.parseDouble(longitude));
 
-                        Position position = new Position(district,city,destinationName,address,contact,latitude,longitude,distance);
+                        Position position = new Position(id,district,city,destinationName,address,contact,latitude,longitude,distance,dataType);
                         listData.add(position);
 
 

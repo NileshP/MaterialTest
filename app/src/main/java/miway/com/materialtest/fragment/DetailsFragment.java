@@ -147,7 +147,7 @@ public class DetailsFragment extends Fragment {
 
         String url = StaticDataProvider.ServerURL+"8093/detailsjson?id="+getSelectData().getId()+"&dataType=2";
 
-        invokeWSBaseJSon();
+        invokeWSBaseJSon(url,1);
 
         return v;
 
@@ -273,14 +273,7 @@ public class DetailsFragment extends Fragment {
                 System.out.println("Started Parsing");
 
 
-                try {
 
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
             }
 
